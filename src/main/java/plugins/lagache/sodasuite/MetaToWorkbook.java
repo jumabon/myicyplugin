@@ -12,19 +12,19 @@ import plugins.adufour.blocks.util.VarList;
 import plugins.adufour.vars.lang.VarDoubleArrayNative;
 import plugins.adufour.vars.lang.VarWorkbook;
 
-public class TabToWorkbook extends Plugin implements Block, PluginBundled
+public class MetaToWorkbook extends Plugin implements Block, PluginBundled
 {
-
-    VarDoubleArrayNative probabilities = new VarDoubleArrayNative("Probabilities", null);
-    VarDoubleArrayNative distances = new VarDoubleArrayNative("Distances", null);
+    VarStringNative positionX = new VarDoubleArrayNative("positionX", null); 
+    VarDoubleArrayNative positionX = new VarDoubleArrayNative("positionX", null);
+    VarDoubleArrayNative positionY = new VarDoubleArrayNative("positionY", null);
     VarWorkbook book = new VarWorkbook("Workbook", (Workbook) null);
 
     @Override
     public void declareInput(VarList inputMap)
     {
 
-        inputMap.add("Probabilities", probabilities);
-        inputMap.add("Distances", distances);
+        inputMap.add("positionX", positionX);
+        inputMap.add("positionY", positionY);
     }
 
     @Override
@@ -57,16 +57,16 @@ public class TabToWorkbook extends Plugin implements Block, PluginBundled
         if (header == null)
         {
             header = sheet.createRow(0);
-            header.getCell(0).setCellValue("Probabilities");
-            header.getCell(1).setCellValue("Distances");
+            header.getCell(0).setCellValue("positionX");
+            header.getCell(1).setCellValue("positionY");
         }
 
         int ind_row = 0;
         ind_row++;
         Row row = sheet.createRow(ind_row);
-        // on recupere les tableaux associés aux proba et distances
-        double[] proba = probabilities.getValue();
-        double[] dist = distances.getValue();
+        // on recupere les tableaux associés aux proba et positionY
+        double[] proba = positionX.getValue();
+        double[] dist = positionY.getValue();
         int size_max = Math.min(proba.length, 65000);
         for (int j = 0; j < size_max; j++)
         {
