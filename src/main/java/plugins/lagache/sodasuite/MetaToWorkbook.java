@@ -61,6 +61,8 @@ public class MetaToWorkbook extends Plugin implements Block, PluginBundled
         // create the sheet
         String sheetName = "Results";
         Sheet sheet = wb.getSheet(sheetName);
+        if (sheet == null)
+            sheet = wb.createSheet(sheetName);
         Row header = sheet.getRow(0);
         if (header == null)
         {
