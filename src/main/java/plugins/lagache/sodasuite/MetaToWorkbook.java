@@ -72,7 +72,7 @@ public class MetaToWorkbook extends Plugin implements Block, PluginBundled
             header.getCell(2).setCellValue("positionY");
         }
         int i = sheet.getPhysicalNumberOfRows();
-        Row row = sheet.createRow(i + 1);
+        Row row = sheet.createRow(i);
         double[] proba = positionX.getValue();
         double[] dist = positionY.getValue();
         row.getCell(0).setCellValue(name.getValue());
