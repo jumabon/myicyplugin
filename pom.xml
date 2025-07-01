@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Inherited Icy Parent POM -->
+    <parent>
+		<artifactId>pom-icy</artifactId>
+        <groupId>org.bioimageanalysis.icy</groupId>
+        <version>2.1.6</version>
+	</parent>
+
+    <!-- Project Information -->
+    <artifactId>soda-suite</artifactId>
+    <version>1.1.0</version>
+
+    <packaging>jar</packaging>
+
+    <name>Soda Suite</name>
+    <description>
+        Ensemble of blocks that implement SODA method for confocal and super-resolution microscopy, in 2 and 3 dimensions
+    </description>
+    <url>http://icy.bioimageanalysis.org/plugin/soda-suite/</url>
+    <inceptionYear>2020</inceptionYear>
+
+    <organization>
+        <name>Institut Pasteur</name>
+        <url>https://pasteur.fr</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>GNU GPLv3</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.en.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>sdallongeville</id>
+            <name>Stéphane Dallongeville</name>
+            <url>https://research.pasteur.fr/fr/member/stephane-dallongeville/</url>
+            <roles>
+                <role>founder</role>
+                <role>lead</role>
+                <role>architect</role>
+                <role>developer</role>
+                <role>debugger</role>
+                <role>tester</role>
+                <role>maintainer</role>
+                <role>support</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <!-- Project properties -->
+    <properties>
+
+    </properties>
+
+
+    <!-- List of project's dependencies -->
+    <dependencies>
+
+        <dependency>
+            <groupId>org.bioimageanalysis.icy</groupId>
+            <artifactId>apache-poi</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.bioimageanalysis.icy</groupId>
+            <artifactId>flanagan</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.bioimageanalysis.icy</groupId>
+            <artifactId>workbooks</artifactId>
+        </dependency>
+    </dependencies>
+
+    <!-- Icy Maven repository (to find parent POM) -->
+    <repositories>
+        <repository>
+            <id>icy</id>
+            <name>Icy's Nexus</name>
+            <url>https://icy-nexus.pasteur.fr/repository/Icy/</url>
+        </repository>
+    </repositories>
+</project>
