@@ -12,7 +12,7 @@
 	</parent>
 
     <!-- Project Information -->
-    <artifactId>soda-suite</artifactId>
+    <artifactId>julie-plugin</artifactId>
     <version>1.1.0</version>
 
     <packaging>jar</packaging>
@@ -71,13 +71,13 @@
 
         <dependency>
             <groupId>org.bioimageanalysis.icy</groupId>
-            <artifactId>flanagan</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.bioimageanalysis.icy</groupId>
             <artifactId>workbooks</artifactId>
         </dependency>
+		<dependency>
+		    <groupId>com.nativelibs4java</groupId>
+		    <artifactId>ochafik-swing</artifactId>
+		    <version>0.12</version>
+		</dependency>
     </dependencies>
 
     <!-- Icy Maven repository (to find parent POM) -->

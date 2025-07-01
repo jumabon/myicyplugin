@@ -5,24 +5,35 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
+import icy.main.Icy;
+import icy.plugin.PluginLauncher;
+import icy.plugin.PluginLoader;
 import icy.plugin.abstract_.Plugin;
 import icy.plugin.interface_.PluginBundled;
 import plugins.adufour.blocks.lang.Block;
 import plugins.adufour.blocks.util.VarList;
+import plugins.adufour.ezplug.EzVarText;
 import plugins.adufour.vars.lang.VarDoubleArrayNative;
 import plugins.adufour.vars.lang.VarWorkbook;
 
 public class MetaToWorkbook extends Plugin implements Block, PluginBundled
 {
-    VarStringNative positionX = new VarDoubleArrayNative("positionX", null); 
+    private EzVarText name;
     VarDoubleArrayNative positionX = new VarDoubleArrayNative("positionX", null);
     VarDoubleArrayNative positionY = new VarDoubleArrayNative("positionY", null);
     VarWorkbook book = new VarWorkbook("Workbook", (Workbook) null);
 
+    public static void main(String[] args)
+    {
+        Icy.main(args);
+        PluginLauncher.start(PluginLoader.getPlugin(MetaToWorkbook.class.getName()));
+    }
+
     @Override
     public void declareInput(VarList inputMap)
     {
-
+    	name = new EzVarText("Model name", "", 0);
+    	inputMap.add("name", name.getVariable());
         inputMap.add("positionX", positionX);
         inputMap.add("positionY", positionY);
     }
@@ -36,7 +47,7 @@ public class MetaToWorkbook extends Plugin implements Block, PluginBundled
     @Override
     public String getMainPluginClassName()
     {
-        return SODAsuite.class.getName();
+        return MetaToWorkbook.class.getName();
     }
 
     @Override
@@ -49,32 +60,22 @@ public class MetaToWorkbook extends Plugin implements Block, PluginBundled
 
         // create the sheet
         String sheetName = "Results";
-        String sheetName2 = new String("Results 2");
         Sheet sheet = wb.getSheet(sheetName);
-        if (sheet == null)
-            sheet = wb.createSheet(sheetName);
         Row header = sheet.getRow(0);
         if (header == null)
         {
             header = sheet.createRow(0);
-            header.getCell(0).setCellValue("positionX");
-            header.getCell(1).setCellValue("positionY");
+            header.getCell(0).setCellValue("name");
+            header.getCell(1).setCellValue("positionX");
+            header.getCell(2).setCellValue("positionY");
         }
 
-        int ind_row = 0;
-        ind_row++;
-        Row row = sheet.createRow(ind_row);
-        // on recupere les tableaux associés aux proba et positionY
+        Row row = sheet.createRow(0);
         double[] proba = positionX.getValue();
         double[] dist = positionY.getValue();
-        int size_max = Math.min(proba.length, 65000);
-        for (int j = 0; j < size_max; j++)
-        {
-            row.getCell(0).setCellValue(proba[j]);
-            row.getCell(1).setCellValue(dist[j]);
-            // on crée une nouvelle ligne dans la feuille excel
-            ind_row++;
-            row = sheet.createRow(ind_row);
-        }
+        row.getCell(0).setCellValue(name.getValue());
+        row.getCell(1).setCellValue(proba[0]);
+        row.getCell(2).setCellValue(dist[0]);
+        // on crée une nouvelle ligne dans la feuille excel
     }
 }
