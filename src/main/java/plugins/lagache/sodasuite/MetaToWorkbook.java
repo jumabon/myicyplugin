@@ -74,8 +74,8 @@ public class MetaToWorkbook extends Plugin implements Block, PluginBundled
             header.getCell(0).setCellValue("filename");
             header.getCell(1).setCellValue("positionX");
             header.getCell(2).setCellValue("positionY");
-            header.getCell(4).setCellValue("pixelSizeX");
-            header.getCell(3).setCellValue("pixelSizeY");
+            header.getCell(3).setCellValue("pixelSizeX");
+            header.getCell(4).setCellValue("pixelSizeY");
         }
         int i = sheet.getPhysicalNumberOfRows();
         Row row = sheet.createRow(i);
