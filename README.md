@@ -6,18 +6,14 @@
 [![Image.sc forum](https://img.shields.io/badge/discourse-forum-brightgreen.svg?style=flat)](https://forum.image.sc/tag/icy)
 <!-- badges: end -->
 
-This is the repository for the source code of *Soda Suite*, a plugin for the [bioimage analysis software Icy](http://icy.bioimageanalysis.org/), which was developed by members or former members of the [Biological Image Analysis unit at Institut Pasteur](https://research.pasteur.fr/en/team/bioimage-analysis/). This plugin is licensed under GPL3 license.     
-Icy is developed and maintained by [Biological Image Analysis unit at Institut Pasteur](https://research.pasteur.fr/en/team/bioimage-analysis/). The [source code of Icy](https://gitlab.pasteur.fr/bia/icy) is also licensed under a GPL3 license.     
-
+I Just wanted to save some metadata to a workbook so Carlos helped me write a plugin. The code is an adaptation of [TabToWorkbook](https://gitlab.pasteur.fr/bia/soda-suite/-/blob/master/src/main/java/plugins/lagache/sodasuite/TabToWorkbook.java?ref_type=heads) from [sodasuite](https://gitlab.pasteur.fr/bia/soda-suite)
 
 
 ## Plugin description
 
 <!-- Short description of goals of package, with descriptive links to the documentation website --> 
 
-Ensemble of blocks that implement SODA method for confocal and super-resolution microscopy, in 2 and 3 dimensions        
-A more detailed user documentation can be found on the Soda Suite documentation page on the Icy website: http://icy.bioimageanalysis.org/plugin/soda-suite/               
-
+A very basic block to save some metadata to a workbook
 
 ## Installation instructions
 
@@ -32,13 +28,9 @@ For developers, see our [Contributing guidelines](https://gitlab.pasteur.fr/bia/
 
 <!-- list main functions, explain architecture, classname, give info on how to get started with the plugin. If applicable, how the package compares to other similar packages and/or how it relates to other packages -->
 
-Classname: `plugins.lagache.sodasuite.SODAsuite`
-
 
 
 ## Citation 
-
-Please cite this plugins as follows:          
 
 
 Please also cite the Icy software and mention the version of Icy you used (bottom right corner of the GUI or first lines of the Output tab):     
@@ -49,8 +41,7 @@ http://icy.bioimageanalysis.org
 
 ## Author(s)      
 
-Thibault Lagache
-
+Julie Mabon, Carlos Garcia Lopez
 
 ## Additional information
 

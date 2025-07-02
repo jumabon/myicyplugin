@@ -21,6 +21,8 @@ public class MetaToWorkbook extends Plugin implements Block, PluginBundled
     private EzVarText name;
     VarDoubleArrayNative positionX = new VarDoubleArrayNative("positionX", null);
     VarDoubleArrayNative positionY = new VarDoubleArrayNative("positionY", null);
+    VarDoubleArrayNative pixelSizeX = new VarDoubleArrayNative("pixelSizeX", null);
+    VarDoubleArrayNative pixelSizeY = new VarDoubleArrayNative("pixelSizeY", null);
     VarWorkbook book = new VarWorkbook("Workbook", (Workbook) null);
 
     public static void main(String[] args)
@@ -32,10 +34,12 @@ public class MetaToWorkbook extends Plugin implements Block, PluginBundled
     @Override
     public void declareInput(VarList inputMap)
     {
-    	name = new EzVarText("Model name", "", 0);
+    	name = new EzVarText("filename", "", 0);
     	inputMap.add("name", name.getVariable());
         inputMap.add("positionX", positionX);
         inputMap.add("positionY", positionY);
+        inputMap.add("pixelSizeX", pixelSizeX);
+        inputMap.add("pixelSizeY", pixelSizeY);
     }
 
     @Override
@@ -67,17 +71,19 @@ public class MetaToWorkbook extends Plugin implements Block, PluginBundled
         if (header == null)
         {
             header = sheet.createRow(0);
-            header.getCell(0).setCellValue("name");
+            header.getCell(0).setCellValue("filename");
             header.getCell(1).setCellValue("positionX");
             header.getCell(2).setCellValue("positionY");
+            header.getCell(4).setCellValue("pixelSizeX");
+            header.getCell(3).setCellValue("pixelSizeY");
         }
         int i = sheet.getPhysicalNumberOfRows();
         Row row = sheet.createRow(i);
-        double[] proba = positionX.getValue();
-        double[] dist = positionY.getValue();
         row.getCell(0).setCellValue(name.getValue());
-        row.getCell(1).setCellValue(proba[0]);
-        row.getCell(2).setCellValue(dist[0]);
+        row.getCell(1).setCellValue(positionX.getValue()[0]);
+        row.getCell(2).setCellValue(positionY.getValue()[0]);
+        row.getCell(3).setCellValue(pixelSizeX.getValue()[0]);
+        row.getCell(4).setCellValue(pixelSizeY.getValue()[0]);
         // on crée une nouvelle ligne dans la feuille excel
     }
 }

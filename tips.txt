@@ -1,0 +1,5 @@
+Compile:
+mvn -P plugin clean install
+
+Change artifact name:
+name     <artifactId>julie-plugin</artifactId>
