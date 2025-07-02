@@ -14,6 +14,7 @@ import plugins.adufour.blocks.lang.Block;
 import plugins.adufour.blocks.util.VarList;
 import plugins.adufour.ezplug.EzVarText;
 import plugins.adufour.vars.lang.VarDoubleArrayNative;
+import plugins.adufour.vars.lang.VarInteger;
 import plugins.adufour.vars.lang.VarWorkbook;
 
 public class MetaToWorkbook extends Plugin implements Block, PluginBundled
@@ -23,6 +24,8 @@ public class MetaToWorkbook extends Plugin implements Block, PluginBundled
     VarDoubleArrayNative positionY = new VarDoubleArrayNative("positionY", null);
     VarDoubleArrayNative pixelSizeX = new VarDoubleArrayNative("pixelSizeX", null);
     VarDoubleArrayNative pixelSizeY = new VarDoubleArrayNative("pixelSizeY", null);
+    VarInteger sizeX = new VarInteger("sizeX", null);
+    VarInteger sizeY = new VarInteger("sizeY", null);
     VarWorkbook book = new VarWorkbook("Workbook", (Workbook) null);
 
     public static void main(String[] args)
@@ -40,6 +43,8 @@ public class MetaToWorkbook extends Plugin implements Block, PluginBundled
         inputMap.add("positionY", positionY);
         inputMap.add("pixelSizeX", pixelSizeX);
         inputMap.add("pixelSizeY", pixelSizeY);
+        inputMap.add("sizeX", sizeX);
+        inputMap.add("sizeY", sizeY);
     }
 
     @Override
@@ -76,6 +81,8 @@ public class MetaToWorkbook extends Plugin implements Block, PluginBundled
             header.getCell(2).setCellValue("positionY");
             header.getCell(3).setCellValue("pixelSizeX");
             header.getCell(4).setCellValue("pixelSizeY");
+            header.getCell(5).setCellValue("sizeX");
+            header.getCell(6).setCellValue("sizeY");
         }
         int i = sheet.getPhysicalNumberOfRows();
         Row row = sheet.createRow(i);
@@ -84,6 +91,8 @@ public class MetaToWorkbook extends Plugin implements Block, PluginBundled
         row.getCell(2).setCellValue(positionY.getValue()[0]);
         row.getCell(3).setCellValue(pixelSizeX.getValue()[0]);
         row.getCell(4).setCellValue(pixelSizeY.getValue()[0]);
+        row.getCell(5).setCellValue(sizeX.getValue());
+        row.getCell(6).setCellValue(sizeY.getValue());
         // on crée une nouvelle ligne dans la feuille excel
     }
 }
